@@ -36,6 +36,9 @@
 .single-tweet{
     text-align: center;
 }
+.single-tweet img{
+    max-height: 50vh;
+}
 .tweet-body{
     margin-top: 2rem;
 }

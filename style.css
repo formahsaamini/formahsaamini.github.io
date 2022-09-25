@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+:root{
+    --blood-color: #8a0303;
+    --date-color: rgb(113, 118, 123);
+    --hashtag-color: rgb(29, 155, 240);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Lalezar', cursive;
+}
+
+#header{
+    height: 9vh;
+    text-align: center;
+    background: var(--blood-color)
+}
+#header a{
+    color: darkgray;
+    /* text-decoration: none; */
+}
+
+#main-body{
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 91vh;
+    width: 100vw;
+    font-size: 2vh;
+}
+
+.single-tweet{
+    text-align: center;
+}
+.tweet-body{
+    margin-top: 2rem;
+}
+.date{
+    color: var(--date-color);
+    margin-top: 1rem;
+}
+
+.list-tweet{}
+
+.tag{
+    color: var(--hashtag-color);
+}

@@ -65,6 +65,9 @@ article{
 .tweet-text{
     text-align: right;
 }
+.tweet-image{
+    margin: 1rem 0;
+}
 .tweet-image img{
     max-height: 25vh;
 }

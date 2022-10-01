@@ -1,5 +1,7 @@
-let isDataLoaded = false
-const tweetContainer = document.querySelector('#tweet-container')
+let isDataLoaded = false;
+let lastTweetLoaded = null;
+const tweetContainer = document.querySelector("#tweet-container");
+const mainBody = document.querySelector('#main-body')
 async function populateData() {
   const requestURL = "/data/tweets-all.json";
   const request = new Request(requestURL);
@@ -31,12 +33,15 @@ function populateTweetData(objs) {
       article.appendChild(imgContainer);
     }
     if (obj.Videos !== null) {
+        if(imgContainer){
+            imgContainer.setAttribute('display', 'none')
+        }
       const videoContainer = document.createElement("div");
       videoContainer.className = "tweet-image";
 
       const video = document.createElement("video");
       video.src = obj.Videos[0].URL;
-      video.setAttribute("width", "500");
+      video.setAttribute("height", "500");
       videoContainer.appendChild(video);
 
       article.appendChild(videoContainer);
@@ -54,19 +59,56 @@ populateData();
 
 function loadNTweet(startNumber = 0, endNumber = 20) {
   for (let count = startNumber; count <= endNumber; count++) {
-    tweetContainer.appendChild(tweetList[count]);
+    if(tweetList[count]!==null){
+        tweetContainer.appendChild(tweetList[count]);
+        lastTweetLoaded = endNumber
+        console.log(lastTweetLoaded, tweetList.length)
+    }
   }
 }
 
-const dataLoadingCheck = setInterval(()=>{
-    if(tweetList.length > 0){
-        isDataLoaded = true
-        setTimeout(loadNTweet(0,0), 1000);
-        clearInterval(dataLoadingCheck)
-    }
-},100)
-if(isDataLoaded){clearInterval(dataLoadingCheck)}
-
-function nextTweet(){
-    
+const dataLoadingCheck = setInterval(() => {
+  if (tweetList.length > 0) {
+    isDataLoaded = true;
+    setTimeout(loadNTweet(0, 0), 1000);
+    lastTweetLoaded = 0
+    clearInterval(dataLoadingCheck);
+  }
+}, 100);
+if (isDataLoaded) {
+  clearInterval(dataLoadingCheck);
 }
+
+function nextTweet() {
+    const newTweet = lastTweetLoaded+1
+  let child = tweetContainer.lastElementChild;
+  while (child) {
+    tweetContainer.removeChild(child);
+    child = tweetContainer.lastElementChild;
+  }
+  loadNTweet(newTweet, newTweet)
+}
+
+const tweetChangeIntervalTime = 4000
+
+const changeTweetInterval = setInterval(()=>{
+    nextTweet()
+}, tweetChangeIntervalTime)
+
+function stopChangeTweetInterval(){
+    clearInterval(changeTweetInterval)
+}
+
+// let isMouseOverTweet = false
+// mainBody.addEventListener('mouseover',()=>{
+//     isMouseOverTweet = true
+//     stopChangeTweetInterval();
+// })
+
+// setInterval(()=>{
+//     if(!isMouseOverTweet){
+//         changeTweetInterval = setInterval(()=>{
+//             nextTweet()
+//         }, tweetChangeIntervalTime)
+//     }
+// }, 100)

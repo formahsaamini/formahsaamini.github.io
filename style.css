@@ -1,54 +1,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
 :root{
     --blood-color: #8a0303;
-    --date-color: rgb(113, 118, 123);
+    --time-color: rgb(113, 118, 123);
     --hashtag-color: rgb(29, 155, 240);
 }
 
 *{
     box-sizing: border-box;
     margin: 0;
-    font-family: 'Lalezar', cursive;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background: black;
+    gap: 1.5rem;
 }
 
 #header{
-    height: 9vh;
+    font-family: 'Lalezar', cursive;
+    background: black;
     text-align: center;
-    background: var(--blood-color)
+    /* height: 20vh; */
 }
-#header a{
-    color: darkgray;
-    /* text-decoration: none; */
+#header h1{
+    color: var(--blood-color);
+}
+#header h1:nth-child(2){
+    margin-top: -1rem;
+}
+#header h3{
+    color: white;
+    margin-top: 1rem;
 }
 
 #main-body{
     background: black;
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
-    height: 91vh;
+    justify-content: flex-end;
+    /* height: 80vh; */
     width: 100vw;
-    font-size: 2vh;
+    font-size: 1.2rem;
 }
 
+article{
+    /* margin-bottom: 0.5rem; */
+    padding: 1rem
+}
 .single-tweet{
+    font-family: 'Tahoma', sans-serif;
+    /* margin-top: 1.5rem; */
+    border-radius: 15px;
+    background: white;
     text-align: center;
+    /* outline: 1px red solid; */
+    width: 80vw;
 }
-.single-tweet img{
-    max-height: 50vh;
+.tweet-text{
+    text-align: right;
 }
-.tweet-body{
+.tweet-image img{
+    max-height: 25vh;
+}
+/* .tweet-text{
     margin-top: 2rem;
-}
-.date{
-    color: var(--date-color);
-    margin-top: 1rem;
+} */
+.time{
+    font-size: 1rem;
+    text-align: left;
+    color: var(--time-color);
+    margin-top: 1.5rem;
 }
 
-.list-tweet{}
-
-.tag{
+.hashtags{
     color: var(--hashtag-color);
+}
+.tweet-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.tweet-footer{
+    color: var(--time-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+iframe{
+    width: 80vw;
+    height: 30vh;
 }

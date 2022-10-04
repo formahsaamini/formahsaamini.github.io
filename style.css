@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
 :root{
-    --blood-color: #8a0303;
+    --blood-color: #C62323;
     --time-color: rgb(113, 118, 123);
     --hashtag-color: rgb(29, 155, 240);
 }
@@ -54,7 +54,7 @@ article{
     padding: 1rem
 }
 .single-tweet{
-    font-family: 'Tahoma', sans-serif;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
     /* margin-top: 1.5rem; */
     border-radius: 15px;
     background: white;
